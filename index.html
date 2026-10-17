@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>فك شفرة البيجر</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23050805%22/%3E%3Crect x=%228%22 y=%2212%22 width=%2248%22 height=%2240%22 rx=%228%22 fill=%22%232A2E2A%22 stroke=%22%233DFF3D%22 stroke-width=%222%22/%3E%3Crect x=%2213%22 y=%2217%22 width=%2238%22 height=%2220%22 rx=%223%22 fill=%22%23050805%22/%3E%3Crect x=%2217%22 y=%2222%22 width=%2222%22 height=%223.5%22 rx=%221.7%22 fill=%22%233DFF3D%22/%3E%3Crect x=%2217%22 y=%2229%22 width=%2214%22 height=%223.5%22 rx=%221.7%22 fill=%22%233DFF3D%22/%3E%3Crect x=%2213%22 y=%2241%22 width=%2210%22 height=%226%22 rx=%222%22 fill=%22%230B100B%22 stroke=%22%233DFF3D%22/%3E%3Crect x=%2227%22 y=%2241%22 width=%2210%22 height=%226%22 rx=%222%22 fill=%22%233DFF3D%22/%3E%3Crect x=%2241%22 y=%2241%22 width=%2210%22 height=%226%22 rx=%222%22 fill=%22%230B100B%22 stroke=%22%233DFF3D%22/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#C8D0C5;--mute:#4B554A;--ink:#1B221A;--line:#9AA797;
@@ -19,7 +20,9 @@ main{max-width:640px;margin:0 auto;padding:10px 14px 24px}
 .bar{display:flex;justify-content:space-between;gap:10px;font-family:"Share Tech Mono",ui-monospace,monospace;font-size:.8rem;color:#3DFF3D;background:#050805;border:1px solid #1E4A1E;border-bottom:0;border-radius:12px 12px 0 0;padding:6px 12px;direction:ltr}
 .screen{background:#050805;border:1px solid #1E4A1E;border-radius:0 0 12px 12px;padding:14px 16px 16px;color:#5CFF5C;background-image:repeating-linear-gradient(0deg,rgba(61,255,61,.035) 0 1px,transparent 1px 3px)}
 h1{font-size:clamp(1.7rem,7vw,2.4rem);line-height:1.3;margin:0 0 12px;font-weight:700;color:#3DFF3D}
-.sub{color:#38B838;margin:0 0 16px}
+.credit{margin:0 0 12px;color:#38B838;font-size:.95rem}
+.credit a{color:#6DFF6D;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.credit a:focus-visible{outline:2px solid #3DFF3D;outline-offset:2px;border-radius:4px}
 textarea{width:100%;min-height:84px;resize:vertical;border:1px solid #1F6B1F;background:#000;color:#6DFF6D;caret-color:#3DFF3D;border-radius:8px;padding:12px;font:inherit;font-size:1.15rem}
 textarea::placeholder{color:#2E8A2E}
 textarea:focus-visible,button:focus-visible{outline:2px solid #3DFF3D;outline-offset:2px}
@@ -40,17 +43,18 @@ output:empty::before{content:"الجملة تظهر هنا";color:#2E8A2E;font-s
 .keys button{border:1px solid #2F6B2F;background:#0B100B;color:#6DFF6D;font:inherit;font-weight:700;font-size:.95rem;padding:13px 4px;border-radius:7px;cursor:pointer}
 .keys button[aria-pressed="true"]{background:#3DFF3D;color:#031003;border-color:#3DFF3D}
 .keys button:active{transform:translateY(1px)}
-footer{margin-top:14px;text-align:center;color:var(--mute)}
+footer{margin:14px 0 0;text-align:center;color:var(--mute)}
 footer a{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:#3DFF3D;text-decoration-thickness:3px;text-underline-offset:4px}
 footer a:focus-visible{outline:3px solid #3DFF3D;outline-offset:3px;border-radius:4px}
 @media (max-width:420px){main{padding:8px 10px 20px}.pager{padding:9px;border-radius:22px}output{font-size:1.6rem}.keys button{font-size:.82rem;padding:12px 2px}.map{grid-template-columns:repeat(auto-fill,minmax(54px,1fr))}}
 @media (min-width:768px){main{max-width:1100px;padding:16px 32px 28px}body{font-size:1.1rem}textarea{min-height:110px;font-size:1.3rem}output{font-size:2.4rem;min-height:80px}.map{grid-template-columns:repeat(auto-fill,minmax(78px,1fr))}.map b{font-size:1.7rem}.keys button{font-size:1.05rem;padding:15px 6px}}
 @media (min-width:1200px){main{max-width:1320px}.map{grid-template-columns:repeat(auto-fill,minmax(90px,1fr))}}
-@media (min-width:768px) and (max-height:720px){main{padding:8px 32px 12px}h1{font-size:1.9rem;margin:0 0 8px}textarea{min-height:80px}output{min-height:64px;font-size:2rem}.screen{padding:10px 16px 12px}.keys{margin-top:8px}.keys button{padding:11px 6px}.toggle{margin:8px 0 6px}footer{margin-top:8px;font-size:.95rem}}
+@media (min-width:768px) and (max-height:720px){main{padding:8px 32px 12px}h1{font-size:1.9rem;margin:0 0 8px}textarea{min-height:80px}output{min-height:64px;font-size:2rem}.screen{padding:10px 16px 12px}.keys{margin-top:8px}.keys button{padding:11px 6px}.toggle{margin:8px 0 6px}footer{margin:8px 0 0;font-size:.95rem}}
 </style>
 </head>
 <body>
 <main>
+  
   <div class="pager">
     <div class="bar"><span>PAGER-01</span><span>SIG ▂▄▆█ · 68%</span></div>
     <div class="screen">
@@ -73,7 +77,8 @@ footer a:focus-visible{outline:3px solid #3DFF3D;outline-offset:3px;border-radiu
     </div>
   </div>
 
-  <footer>أُنشئ بواسطة <a href="https://twitter.com/alhusen_91" target="_blank" rel="noopener noreferrer">MAF</a><br>حسابي على تويتر: <a href="https://twitter.com/alhusen_91" target="_blank" rel="noopener noreferrer" dir="ltr">@alhusen_91</a></footer>
+  
+<footer>أُنشئ بواسطة <a href="https://twitter.com/alhusen_91" target="_blank" rel="noopener noreferrer">MAF</a><br>حسابي على تويتر: <a href="https://twitter.com/alhusen_91" target="_blank" rel="noopener noreferrer" dir="ltr">@alhusen_91</a></footer>
 </main>
 
 <script>
